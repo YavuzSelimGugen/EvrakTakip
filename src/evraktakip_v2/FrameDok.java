@@ -5,17 +5,34 @@
  */
 package evraktakip_v2;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author yavuz
  */
 public class FrameDok extends javax.swing.JFrame {
 
+    DefaultTableModel dtm = new DefaultTableModel();
+    Doktor d1 = new Doktor();
+
     /**
      * Creates new form FrameDok
      */
-    public FrameDok() {
+//    public FrameDok() {
+//        initComponents();
+//        dtm.setRowCount(0);
+//        jTable1.setModel(dtm);
+//    }
+
+    public FrameDok(Doktor d) {
         initComponents();
+        jLabel1.setText("Hoşgeldiniz doktor " + d.ad + " " + d.soyad);
+        d1 = d;
+        dtm.setColumnIdentifiers(new Object[]{"Rapor No", "Gönderen Hasta", "Başlık"});
+        dtm.addRow(new Object[]{"nosuz", "Boş", "Boş"});
+        jTable1.setModel(dtm);
     }
 
     /**
@@ -27,21 +44,175 @@ public class FrameDok extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        jRadioGelenRapor = new javax.swing.JRadioButton();
+        jRadioGidenRecete = new javax.swing.JRadioButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        buttonGroup1.add(jRadioGelenRapor);
+        jRadioGelenRapor.setText("Gelen Raporlar");
+        jRadioGelenRapor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioGelenRaporActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(jRadioGidenRecete);
+        jRadioGidenRecete.setText("Cevapladığım Raporlar");
+        jRadioGidenRecete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioGidenReceteActionPerformed(evt);
+            }
+        });
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jLabel1.setText("jLabel1");
+
+        jButton1.setText("Reçete Yaz");
+        jButton1.setEnabled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Login Ekranına Dön");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                        .addGap(289, 289, 289))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jRadioGelenRapor)
+                                .addGap(18, 18, 18)
+                                .addComponent(jRadioGidenRecete))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addGap(34, 34, 34))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioGelenRapor)
+                    .addComponent(jRadioGidenRecete))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jRadioGelenRaporActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioGelenRaporActionPerformed
+        // TODO add your handling code here:
+        if (jRadioGelenRapor.isSelected()) {
+            jButton1.setEnabled(true);
+        }
+        dtm.setRowCount(0);
+        for (Rapor rapor : d1.gelenRaporlar) {
+            dtm.addRow(new Object[]{
+                rapor.raporId,
+                rapor.GonderenHasta.ad + " " + rapor.GonderenHasta.soyad,
+                rapor.baslik
+            });
+        }
+        jTable1.setModel(dtm);
+    }//GEN-LAST:event_jRadioGelenRaporActionPerformed
+
+    private void jRadioGidenReceteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioGidenReceteActionPerformed
+        // TODO add your handling code here:
+        if (jRadioGidenRecete.isSelected()) {
+            jButton1.setEnabled(false);
+        }
+        dtm.setRowCount(0);
+        for (Rapor rapor : d1.cevapladigimRaporlar) {
+            dtm.addRow(new Object[]{rapor.raporId,rapor.GonderenHasta.ad+""+rapor.GonderenHasta.soyad,rapor.baslik});
+            jTable1.setModel(dtm);
+        }
+    }//GEN-LAST:event_jRadioGidenReceteActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        boolean secilimi = false;
+        Rapor r ;
+        Hasta gondrenH=new Hasta();
+        if (jTable1.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(this, "Lütfen rapor seçiniz.", "Hata", JOptionPane.ERROR_MESSAGE);
+        } else {
+            secilimi = true;
+        }
+
+        if (secilimi) {
+            String value = jTable1.getModel().getValueAt(jTable1.getSelectedRow(), 0).toString();
+            for (Rapor rapor : d1.gelenRaporlar) {
+                if (rapor.raporId == Integer.parseInt(value)) {
+                    r = rapor;
+                    gondrenH=rapor.GonderenHasta;
+                    FrameSendRecete frmrecete = new FrameSendRecete(r, d1, gondrenH);
+                    frmrecete.setVisible(true);
+                    buttonGroup1.clearSelection();
+                    dtm.setRowCount(0);
+                    break;
+                }
+
+            }
+            
+            
+
+        }
+
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        FrameLogin login=new FrameLogin();
+        login.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -71,13 +242,21 @@ public class FrameDok extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrameDok().setVisible(true);
-            }
-        });
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new FrameDok().setVisible(true);
+//            }
+//        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JRadioButton jRadioGelenRapor;
+    private javax.swing.JRadioButton jRadioGidenRecete;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

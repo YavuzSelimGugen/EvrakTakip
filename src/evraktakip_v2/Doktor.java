@@ -15,12 +15,10 @@ import java.util.ArrayList;
 public class Doktor {
     static ArrayList <Doktor> doktors=new ArrayList<>();
     
-    String ad,soyad,password,alan;
-    int id;
     
     Doktor(){
         
-        doktors.add(this);
+        //doktors.add(this);
     }
     Doktor(String ad,String soy,String pass,int id,String alan){
         this.ad=ad;
@@ -30,6 +28,10 @@ public class Doktor {
         doktors.add(this);
         this.alan=alan;
     }
-    
+    public ArrayList <Rapor> gelenRaporlar=new ArrayList<>();
+    public ArrayList<Recete> gonderdiğimReceteler=new ArrayList<>();
+    public ArrayList<Rapor> cevapladigimRaporlar=new ArrayList<>();
+    String ad,soyad,password,alan;
+    int id;
     
 }

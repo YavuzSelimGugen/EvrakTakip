@@ -13,8 +13,8 @@ import java.util.ArrayList;
  */
 public class Hasta {
     static ArrayList<Hasta> hastalar=new ArrayList<>();
-    static ArrayList<Evrak> gonderilenRapor=new ArrayList<>();
-    static ArrayList<Evrak> gelenRecete=new ArrayList<>();
+     ArrayList<Rapor> gonderilenRapor=new ArrayList<>();
+     ArrayList<Recete> gelenRecete=new ArrayList<>();
     int id;
     String ad,soyad,pass;
     
@@ -24,5 +24,8 @@ public class Hasta {
         this.pass=pass;
         this.id=id;
         hastalar.add(this);
+    }
+    Hasta(){
+        
     }
 }

@@ -6,27 +6,42 @@
 package evraktakip_v2;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author fsmblm0
  */
 public class FrameSendRapor extends javax.swing.JFrame {
-    DefaultListModel lm=new DefaultListModel();
-    
+
+    DefaultTableModel dtm = new DefaultTableModel();
+    Hasta h1=new Hasta();
     /**
      * Creates new form FrameSendRapor
      */
-    public FrameSendRapor() {
+//    public FrameSendRapor() {
+//        initComponents();
+//        dtm.setColumnIdentifiers(new Object[]{"Doktor No", "Doktor Adı"});
+//        jTable1.setModel(dtm);
+//        //Programı başlattığın yerde oluştur!
+//        Doktor d1 = new Doktor("ss", "aa", "asd", 1234, "Diğer");
+//        Doktor d2 = new Doktor("ssz", "aa", "asd", 1235, "Dahiliye");
+//        Doktor d3 = new Doktor("ssd", "aa", "asd", 1236, "Kulak-Burun-Boğaz");
+//        Doktor d4 = new Doktor("ssf", "aa", "asd", 1237, "Ortapedi");
+//        Doktor d5 = new Doktor("ssf", "aa", "asd", 1238, "Ortapedi");
+//    }
+    public FrameSendRapor(Hasta h) {
         initComponents();
-        
-        jList2.setModel(lm);
-        lm.removeAllElements();
-        Doktor d1=new Doktor("ss", "aa", "asd", 1234, "Diğer");
-        Doktor d2=new Doktor("ssz", "aa", "asd", 1234, "Dahiliye");
-        Doktor d3=new Doktor("ssd", "aa", "asd", 1234, "Kulak-Burun-Boğaz");
-        Doktor d4=new Doktor("ssf", "aa", "asd", 1234, "Ortapedi");
-        Doktor d5=new Doktor("ssf", "aa", "asd", 1234, "Ortapedi");
+        h1=h;
+        dtm.setColumnIdentifiers(new Object[]{"Doktor No", "Doktor Adı"});
+        jTable1.setModel(dtm);
+        //Programı başlattığın yerde oluştur!
+//        Doktor d1 = new Doktor("ss", "aa", "asd", 1234, "Diğer");
+//        Doktor d2 = new Doktor("ssz", "aa", "asd", 1235, "Dahiliye");
+//        Doktor d3 = new Doktor("ssd", "aa", "asd", 1236, "Kulak-Burun-Boğaz");
+//        Doktor d4 = new Doktor("ssf", "aa", "asd", 1237, "Ortapedi");
+//        Doktor d5 = new Doktor("ssf", "aa", "asd", 1238, "Ortapedi");
     }
 
     /**
@@ -48,10 +63,10 @@ public class FrameSendRapor extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
         jButton1 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -61,7 +76,8 @@ public class FrameSendRapor extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jList1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setLocation(new java.awt.Point(500, 200));
+        setLocation(new java.awt.Point(250, 100));
+        setResizable(false);
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -82,79 +98,89 @@ public class FrameSendRapor extends javax.swing.JFrame {
 
         jLabel4.setText("Doktora belirtmeniz gereken özel durumlarınızı unutmayınız.");
 
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane3.setViewportView(jList2);
-
-        jButton1.setText("jButton1");
+        jButton1.setText("Gönder");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jLabel5.setText("jLabel5");
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane4.setViewportView(jTable1);
+
+        jButton2.setText("Geri Dön");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(77, 77, 77))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel4)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(jButton1))
-                            .addComponent(jLabel3))
-                        .addContainerGap(35, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54))))
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel3))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -162,25 +188,76 @@ public class FrameSendRapor extends javax.swing.JFrame {
 
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
         // TODO add your handling code here:
-        String alan= jComboBox1.getSelectedItem().toString();
-        lm.removeAllElements();
+        String alan = jComboBox1.getSelectedItem().toString();
+
+        dtm.setRowCount(0);
         for (Doktor doktor : Doktor.doktors) {
-            if(doktor.alan.compareTo(alan)==0)
-            {
-                lm.addElement(doktor.ad+" "+doktor.soyad);
+            if (doktor.alan.compareTo(alan) == 0) {
+                dtm.addRow(new Object[]{(doktor.id), doktor.ad + " " + doktor.soyad});
+
             }
         }
+        jTable1.setModel(dtm);
     }//GEN-LAST:event_jComboBox1ItemStateChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        Doktor d = new Doktor();
+        boolean doktorsec = false;
+        boolean basliksec = false;
+        boolean aciklamasec = false;
         
+        //Seçili Doktoru bulan if
+        if (jTable1.getSelectedRow() != -1) {
+            doktorsec = true;
+            
+            int row = jTable1.getSelectedRow();
+            String value = jTable1.getModel().getValueAt(row, 0).toString();
+            for (Doktor doktor : Doktor.doktors) {
+                if (doktor.id == Integer.parseInt(value)) {
+                    d = doktor;
+                    break;
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Lütfen doktor seçiniz.", "Hata", JOptionPane.ERROR_MESSAGE);
+        }
+        //Başlık Kontrol
+        if (!jTextField1.getText().isEmpty()) {
+            basliksec = true;
+        } else {
+            JOptionPane.showMessageDialog(this, "Lütfen başlık giriniz.", "Hata", JOptionPane.ERROR_MESSAGE);
+        }
+        //Açıklama Kontrol
+        if (!jTextField1.getText().isEmpty()) {
+            aciklamasec = true;
+        } else {
+            JOptionPane.showMessageDialog(this, "Lütfen açıklama giriniz.", "Hata", JOptionPane.ERROR_MESSAGE);
+        }
+        //İşlemin Başlangıcı
+        if(basliksec && doktorsec && aciklamasec){
+        Rapor r = new Rapor(jTextField1.getText(), jTextField1.getText(),d,h1);
+        d.gelenRaporlar.add(r);
+       // h1.gonderilenRapor.add(r);
         
-      //  Rapor r=new Rapor(jTextField1.getText(), jTextField1.getText(), Doktor.doktors.get(jList2.));
-        jLabel5.setText(Doktor.doktors.get(jList2.getSelectedIndex()).ad);
+        JOptionPane.showMessageDialog(this, "İşleminiz başarılı", "Gönderildi", JOptionPane.PLAIN_MESSAGE);
+        reset();
+        }
         
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+    
+    void reset(){
+        jTextArea1.setText("");
+        jTextField1.setText("");
+        dtm.setRowCount(0);
+        jComboBox1.setSelectedIndex(0);
+    }
     /**
      * @param args the command line arguments
      */
@@ -209,26 +286,26 @@ public class FrameSendRapor extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrameSendRapor().setVisible(true);
-            }
-        });
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new FrameSendRapor().setVisible(true);
+//            }
+//        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables

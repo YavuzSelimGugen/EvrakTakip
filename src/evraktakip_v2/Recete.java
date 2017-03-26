@@ -11,4 +11,11 @@ package evraktakip_v2;
  */
 public class Recete extends Evrak{
     
+    String ilac,tedavi;
+    String baslik;
+    int receteId=0;
+    Recete(){
+        
+    }
+    
 }
