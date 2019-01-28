@@ -8,9 +8,10 @@ Projenin ana dizinindeki .jar kısayoluna tıklayarak veya dilerseniz projeyi te
 Program evrak takip ve kontrolünü kolaylaştırmaya yöneliktir. Program hastane temasında tasarlanmıştır. Bunu doktor ve hasta ilişkilendirmelerini kullanmak vasıtasıyla, kullanıcıya göstererek yapar. Program sayesinde hastalar, belirli alanlarda ki istediği doktora rahatsızlığını belirten bir rapor gönderir. Karşılığında doktor tarafından hastaya gerekli tedavi içeriğinden oluşan bir reçete gönderilir. Hastalar gönderdikleri ve henüz cevap alamadıkları raporları görebilir, gelen reçeteleri okuyabilir. Doktorlar ise gelen cevapsız reçeteleri ve cevapladıkları reçeteleri görebilir.
 
 - **Bazı ekran görüntüleri:**
-![Giriş Ekranı](/img/EvrakSS1.jpg)<br>
-![Kayıt Ekranı](/img/EvrakSS2.jpg)<br>
-![Hasta Ekranı](/img/EvrakSS3.jpg)<br>
+<br>
+![Giriş Ekranı](/img/EvrakSS1.jpg =250x250)<br>
+![Kayıt Ekranı](/img/EvrakSS2.jpg =300x250)<br>
+![Hasta Ekranı](/img/EvrakSS3.jpg =250x250)<br>
 ![Doktor Ekranı](/img/EvrakSS4.jpg)<br>
 ![Doktor Ekranı Arama Sekmesi](/img/EvrakSS5.jpg)<br>
 
