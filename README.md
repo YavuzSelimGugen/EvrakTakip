@@ -9,9 +9,9 @@ Program evrak takip ve kontrolünü kolaylaştırmaya yöneliktir. Program hasta
 
 - **Bazı ekran görüntüleri:**
 <br>
-![Giriş Ekranı](/img/EvrakSS1.jpg =250x250)<br>
-![Kayıt Ekranı](/img/EvrakSS2.jpg =300x250)<br>
-![Hasta Ekranı](/img/EvrakSS3.jpg =250x250)<br>
+![Giriş Ekranı](/img/EvrakSS1.jpg){:class="img-responsive"}<br>
+![Kayıt Ekranı](/img/EvrakSS2.jpg){:height="50%" width="50%"}<br>
+![Hasta Ekranı](/img/EvrakSS3.jpg){:height="700px" width="400px"}<br>
 ![Doktor Ekranı](/img/EvrakSS4.jpg)<br>
 ![Doktor Ekranı Arama Sekmesi](/img/EvrakSS5.jpg)<br>
 
