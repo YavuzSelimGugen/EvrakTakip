@@ -1,6 +1,7 @@
-**Yavuz Selim Gügen -1621221028-BP2**
-
 **Evrak Takip Programı**
+
+- **Nasıl çalıştırırım:**
+Projenin ana dizinindeki .jar kısayoluna tıklayarak veya dilerseniz projeyi tekrar derleyerek çalıştırabilirsiniz.
 
 - **Programın ana amacı:**
 
