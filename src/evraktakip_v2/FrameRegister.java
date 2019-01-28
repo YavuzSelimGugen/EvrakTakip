@@ -56,7 +56,7 @@ public class FrameRegister extends javax.swing.JFrame {
 
         jLabel7.setText("Alan seçiniz:");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocation(new java.awt.Point(400, 200));
 
         buttonGroup1.add(jRadiohasta);
@@ -171,8 +171,7 @@ public class FrameRegister extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel8))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jRadiohasta)))
+                            .addComponent(jRadiohasta))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jRadioDok)))
                 .addGap(18, 18, 18)
@@ -206,7 +205,7 @@ public class FrameRegister extends javax.swing.JFrame {
             devammi = false;
         }
 
-        String iDesen = "^[A-z]";
+        String iDesen = "[a-zA-Z]";
         Pattern p = Pattern.compile(iDesen);
         Matcher m = p.matcher(jtxtid.getText());
         if (devammi) {

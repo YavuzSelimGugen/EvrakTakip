@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
 public class FrameSendRapor extends javax.swing.JFrame {
 
     DefaultTableModel dtm = new DefaultTableModel();
-    Hasta h1=new Hasta();
+    Hasta h1=null;
     /**
      * Creates new form FrameSendRapor
      */
@@ -34,6 +34,7 @@ public class FrameSendRapor extends javax.swing.JFrame {
     public FrameSendRapor(Hasta h) {
         initComponents();
         h1=h;
+        this.setTitle(h1.ad+" "+h1.soyad);
         dtm.setColumnIdentifiers(new Object[]{"Doktor No", "Doktor Adı"});
         jTable1.setModel(dtm);
         //Programı başlattığın yerde oluştur!
@@ -236,9 +237,9 @@ public class FrameSendRapor extends javax.swing.JFrame {
         }
         //İşlemin Başlangıcı
         if(basliksec && doktorsec && aciklamasec){
-        Rapor r = new Rapor(jTextField1.getText(), jTextField1.getText(),d,h1);
+        Rapor r = new Rapor(jTextField1.getText(), jTextArea1.getText(),d,h1);
         d.gelenRaporlar.add(r);
-       // h1.gonderilenRapor.add(r);
+        //h1.gonderilenRapor.add(r);
         
         JOptionPane.showMessageDialog(this, "İşleminiz başarılı", "Gönderildi", JOptionPane.PLAIN_MESSAGE);
         reset();

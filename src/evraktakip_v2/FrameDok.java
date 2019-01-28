@@ -28,11 +28,15 @@ public class FrameDok extends javax.swing.JFrame {
 
     public FrameDok(Doktor d) {
         initComponents();
+        jButton3.setEnabled(false);
+        jLabel2.setVisible(false);
+        jTextFieldSorgula.setVisible(false);
+        jButtonGetir.setVisible(false);
         jLabel1.setText("Hoşgeldiniz doktor " + d.ad + " " + d.soyad);
         d1 = d;
-        dtm.setColumnIdentifiers(new Object[]{"Rapor No", "Gönderen Hasta", "Başlık"});
-        dtm.addRow(new Object[]{"nosuz", "Boş", "Boş"});
-        jTable1.setModel(dtm);
+       dtm.setColumnIdentifiers(new Object[]{"Radio Button seçiniz"});
+//        dtm.addRow(new Object[]{"nosuz", "Boş", "Boş"});
+          jTable1.setModel(dtm);
     }
 
     /**
@@ -52,8 +56,14 @@ public class FrameDok extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jLabel2 = new javax.swing.JLabel();
+        jTextFieldSorgula = new javax.swing.JTextField();
+        jButtonGetir = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setLocation(new java.awt.Point(400, 250));
 
         buttonGroup1.add(jRadioGelenRapor);
         jRadioGelenRapor.setText("Gelen Raporlar");
@@ -101,6 +111,32 @@ public class FrameDok extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setText("Reçeteyi Düzenle");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setText("Gönderdiğim Reçeteler");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("İsme Göre Sorgula:");
+
+        jTextFieldSorgula.setDisabledTextColor(new java.awt.Color(0, 0, 204));
+
+        jButtonGetir.setText("Getir");
+        jButtonGetir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGetirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -109,21 +145,30 @@ public class FrameDok extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(289, 289, 289))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jRadioButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jRadioGelenRapor)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jRadioGidenRecete))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addGap(34, 34, 34))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jButton1)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jButton3)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jButton2))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldSorgula, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButtonGetir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(42, 42, 42))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,13 +178,21 @@ public class FrameDok extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRadioGelenRapor)
-                    .addComponent(jRadioGidenRecete))
+                    .addComponent(jRadioGidenRecete)
+                    .addComponent(jRadioButton1)
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTextFieldSorgula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonGetir)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -150,7 +203,12 @@ public class FrameDok extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (jRadioGelenRapor.isSelected()) {
             jButton1.setEnabled(true);
+            jButton3.setEnabled(false);
+            jLabel2.setVisible(false);
+            jTextFieldSorgula.setVisible(false);
+            jButtonGetir.setVisible(false);
         }
+        dtm.setColumnIdentifiers(new Object[]{"Rapor No", "Gönderen Hasta", "Başlık"});
         dtm.setRowCount(0);
         for (Rapor rapor : d1.gelenRaporlar) {
             dtm.addRow(new Object[]{
@@ -166,6 +224,11 @@ public class FrameDok extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (jRadioGidenRecete.isSelected()) {
             jButton1.setEnabled(false);
+            jButton3.setEnabled(false);
+            jLabel2.setVisible(false);
+            jTextFieldSorgula.setVisible(false);
+            jButtonGetir.setVisible(false);
+
         }
         dtm.setRowCount(0);
         for (Rapor rapor : d1.cevapladigimRaporlar) {
@@ -178,7 +241,7 @@ public class FrameDok extends javax.swing.JFrame {
         // TODO add your handling code here:
         boolean secilimi = false;
         Rapor r ;
-        Hasta gondrenH=new Hasta();
+        Hasta gondrenH=null;
         if (jTable1.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(this, "Lütfen rapor seçiniz.", "Hata", JOptionPane.ERROR_MESSAGE);
         } else {
@@ -189,8 +252,9 @@ public class FrameDok extends javax.swing.JFrame {
             String value = jTable1.getModel().getValueAt(jTable1.getSelectedRow(), 0).toString();
             for (Rapor rapor : d1.gelenRaporlar) {
                 if (rapor.raporId == Integer.parseInt(value)) {
-                    r = rapor;
                     gondrenH=rapor.GonderenHasta;
+                    r = rapor;
+                    
                     FrameSendRecete frmrecete = new FrameSendRecete(r, d1, gondrenH);
                     frmrecete.setVisible(true);
                     buttonGroup1.clearSelection();
@@ -213,6 +277,77 @@ public class FrameDok extends javax.swing.JFrame {
         login.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        if(jTable1.getSelectedRow()!=-1){
+        
+        
+        Recete r=null;
+        Hasta hh=null;
+        int seciliId=(int)jTable1.getValueAt(jTable1.getSelectedRow(), 0);
+        for (Recete rapor : d1.gonderdiğimReceteler) {
+            if(seciliId==rapor.receteId){
+               hh=rapor.gidenHasta; 
+            r=rapor;
+            d1.gonderdiğimReceteler.remove(r);
+            hh.gelenRecete.remove(r);
+            break;
+            }
+            
+        }
+        FrameReceteEdit rct=new FrameReceteEdit(r,d1,hh);
+        rct.setVisible(true);
+        
+        }
+        else{
+        JOptionPane.showMessageDialog(this, "Lüften bir seçim yapınız!", "Hata", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+        if (jRadioButton1.isSelected()) {
+            jButton1.setEnabled(false);
+            jButton3.setEnabled(true);
+            jLabel2.setVisible(true);
+            jTextFieldSorgula.setVisible(true);
+            jButtonGetir.setVisible(true);
+        }
+        dtm.setColumnIdentifiers(new Object[]{"Id","Hasta İsmi","Başlık"});
+        dtm.setRowCount(0);
+        for (Recete recete : d1.gonderdiğimReceteler) {
+            dtm.addRow(new Object[]{
+                recete.receteId,
+                recete.gidenHasta.ad + " " + recete.gidenHasta.soyad,
+                recete.baslik
+                
+            });
+        }
+        jTable1.setModel(dtm);
+        
+
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jButtonGetirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGetirActionPerformed
+        // TODO add your handling code here:
+        dtm.setRowCount(0);
+        dtm.setColumnIdentifiers(new Object[]{"Hasta İsmi","Id","Başlık"});
+        if(jTextFieldSorgula.getText().isEmpty() || jTextFieldSorgula.getText()==null){
+            return;
+        }
+        
+        for (Recete recete : d1.gonderdiğimReceteler) {
+            if(recete.gidenHasta.ad.toLowerCase().startsWith(jTextFieldSorgula.getText())){
+                dtm.addRow(new Object[]{
+                    recete.gidenHasta.ad +recete.gidenHasta.soyad,
+                    recete.baslik,
+                    recete.receteId
+                
+                });
+            }
+        }
+    }//GEN-LAST:event_jButtonGetirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,10 +388,15 @@ public class FrameDok extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButtonGetir;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioGelenRapor;
     private javax.swing.JRadioButton jRadioGidenRecete;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextFieldSorgula;
     // End of variables declaration//GEN-END:variables
 }

@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  * @author YavuzS
  */
 public class FrameSendRecete extends javax.swing.JFrame {
-    Rapor r1;
+    Rapor r1=null;
     Doktor d1=new Doktor();
     Hasta h1=new Hasta();
     /**
@@ -56,7 +56,8 @@ public class FrameSendRecete extends javax.swing.JFrame {
         jTextArea2 = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setLocation(new java.awt.Point(400, 250));
 
         jLabel1.setText("jLabel1");
 
@@ -143,15 +144,21 @@ public class FrameSendRecete extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         boolean dolumu=true;
+        boolean evetmi=true;
         
         if(jTextArea2.getText().isEmpty()){
             dolumu=false;
+            JOptionPane.showMessageDialog(this, "Lüften gerekli alanları boş bırakmayın!", "Hata", JOptionPane.ERROR_MESSAGE);
         }
+        int reply=0;
         if(jTextField1.getText().isEmpty()){
-            JOptionPane.showMessageDialog(this, "İlaç yazmadınız", "Uyarı", JOptionPane.WARNING_MESSAGE);
+            reply=JOptionPane.showConfirmDialog(this, "İlaç yazmadınız, devam edecek misiniz?", "Uyarı", JOptionPane.YES_NO_OPTION);
+            if(reply==JOptionPane.NO_OPTION){evetmi=false;}
+            //JOptionPane.showMessageDialog(this, "İlaç yazmadınız", "Uyarı", JOptionPane.WARNING_MESSAGE);
+            
         }
         
-        if(dolumu){
+        if(dolumu && evetmi){
             Recete recete=new Recete();
             if(jTextField1.getText().isEmpty()){
             recete.ilac="İlaç Yok";
@@ -159,18 +166,24 @@ public class FrameSendRecete extends javax.swing.JFrame {
             else{
                 recete.ilac=jTextField1.getText();
             }
-            
+            recete.gidenHasta=h1;
+            recete.receteId=r1.raporId;
             recete.tedavi=jTextArea2.getText();
             recete.baslik=r1.baslik;
             recete.receteId=r1.raporId;
             h1.gelenRecete.add(recete);
+            
             r1.cevaplandimi=true;
+            d1.gonderdiğimReceteler.add(recete);
+            d1.cevapladigimRaporlar.add(r1);
+            d1.gelenRaporlar.remove(r1);
             JOptionPane.showMessageDialog(this, "İşleminiz başarılı.", "Gönderildi", JOptionPane.PLAIN_MESSAGE);
+            
             this.dispose();
+            
         }
         
-        d1.cevapladigimRaporlar.add(r1);
-        d1.gelenRaporlar.remove(r1);
+        
         
         
         

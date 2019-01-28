@@ -13,6 +13,7 @@ public class Recete extends Evrak{
     
     String ilac,tedavi;
     String baslik;
+    Hasta gidenHasta;
     int receteId=0;
     Recete(){
         

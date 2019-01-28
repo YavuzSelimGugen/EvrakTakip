@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
  * @author yavuz
  */
 public class FrameHasta extends javax.swing.JFrame {
-    Hasta h1=new Hasta();
+    Hasta h1=null;
     DefaultTableModel dtm=new DefaultTableModel();
     /**
      * Creates new form FrameHasta
@@ -46,7 +46,8 @@ public class FrameHasta extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setLocation(new java.awt.Point(400, 250));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -108,7 +109,7 @@ public class FrameHasta extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -153,15 +154,17 @@ public class FrameHasta extends javax.swing.JFrame {
         if(jTable1.getSelectedRow()==-1){
             secilimi=false;
         }
-        
+        boolean buldumadıMı=true;
         for (Recete recete : h1.gelenRecete) {
             if(recete.receteId==(int)jTable1.getValueAt(jTable1.getSelectedRow(), 0)){
                 secilenRecete=recete;
                 FrameReadRecete frm=new FrameReadRecete(recete);
                 frm.setVisible(true);
+                buldumadıMı=false;
                 break;
             }
-            else{
+            
+            if(buldumadıMı){
                 JOptionPane.showMessageDialog(this, "Seçilen recete bulunamadı", "Hata", JOptionPane.ERROR_MESSAGE);
             }
         }
